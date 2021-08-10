@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+        body{
+            padding: 50px;
+            background-color: aliceblue;
+        }
+        #header{
+            text-align: center;
+            border: 1px solid rgb(6, 28, 29);
+            background-color: rgb(155, 168, 109);
+            padding: 10px;
+            margin: 0;
+        }
+        #textarea{
+            margin: 0;
+            background-color: aliceblue;
+            border-left: 1px solid rgb(6, 28, 29);;
+            border-right: 1px solid rgb(6, 28, 29);;
+            border-bottom: 1px solid rgb(6, 28, 29);;
+            width: 99.6%;
+            font-size: 20px;
+        }
+        #result{
+            margin: 0;
+            padding: 10px;
+            border: 1px solid rgb(6, 28, 29);
+            font-size: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>Word Counter</h1>
+    </div>
+    <div>
+        <textarea id="textarea" cols="30" rows="18"></textarea>
+    </div>
+    <div id="result">
+        <p>Words : <span id="word">0</span> Characters : <span id="char">0</span></p>
+    </div>
+
+    <script>
+        let textarea = document.getElementById('textarea');
+        textarea.addEventListener('input', function(){
+            let text = this.value;
+            document.getElementById('char').innerHTML=text.length;
+            text = text.trim();
+            // console.log(text.length);
+            let words = text.split(" ");
+            // console.log(words);
+            let finalWords = words.filter(function(elm){
+                return elm != "";
+            });
+            console.log(finalWords);
+            document.getElementById('word').innerHTML = finalWords.length;
+        })
+
+
+    </script>
+</body>
+</html>
